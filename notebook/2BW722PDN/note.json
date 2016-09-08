@@ -1,0 +1,147 @@
+{
+  "paragraphs": [
+    {
+      "text": "%sh\n\nhead -n 22 /data/ipsum.txt",
+      "dateUpdated": "Sep 26, 2016 4:41:40 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {},
+          "map": {
+            "baseMapType": "Streets",
+            "isOnline": true,
+            "pinCols": []
+          }
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/sh"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1474202686559_-978558567",
+      "id": "20160918-124446_1901612801",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a sem eget dolor gravida viverra ut vitae tellus. Proin mattis urna urna, eget vestibulum magna cursus ut. Nullam at tristique ex, ac tristique nunc. Praesent ligula ante, dictum eget diam nec, fringilla ornare lacus. Fusce non iaculis eros. Ut ut mattis diam. Cras ac tempus ex, id iaculis libero.\n\nProin sed dignissim nulla, fermentum varius velit. Vivamus porta in diam sed sodales. Donec libero quam, scelerisque id mattis ultricies, viverra ut velit. Etiam scelerisque gravida ipsum et porttitor. Vestibulum vel mi porttitor, volutpat tortor vel, pretium arcu. Pellentesque ornare augue ut risus venenatis, eget imperdiet urna rutrum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Curabitur est augue, sodales at dolor ac, condimentum elementum nisl. Nam consequat sem vel enim bibendum, ut interdum est pellentesque. Nunc faucibus gravida pellentesque. Ut dolor dolor, laoreet eget lorem non, dignissim accumsan lectus. Nulla faucibus mauris turpis, ut condimentum orci feugiat in. Curabitur vel libero cursus elit posuere accumsan.\n\nUt condimentum, leo in pulvinar convallis, ante nisl sodales lorem, in consectetur dui magna tempus ex. Donec sit amet ultrices dolor. Nam sit amet auctor lectus. Quisque ante nisl, tincidunt ac lorem maximus, lobortis ultricies mauris. Morbi nec augue vitae arcu ullamcorper malesuada. Donec eget orci a erat gravida tincidunt non sed sapien. Aliquam mauris quam, fermentum tempus tristique id, sollicitudin eget urna. Aliquam erat volutpat.\n\nAenean tempor, metus id convallis vehicula, nunc est finibus odio, ut pellentesque nulla dolor in mauris. Sed varius odio molestie dolor viverra, quis pellentesque erat iaculis. Ut eu sollicitudin ante. Sed venenatis erat nulla, ac scelerisque nunc laoreet eget. Cras lacinia augue nunc, et sollicitudin erat dapibus vel. Nullam eget finibus ante. Duis vehicula maximus feugiat. Proin et nisi dui. Vivamus non turpis non lorem sollicitudin cursus pharetra non eros. Donec purus justo, sagittis ut faucibus a, semper id libero.\n\nDuis dictum pretium orci, id tempor erat suscipit in. Quisque malesuada enim sit amet augue commodo iaculis. In at pellentesque sem. Aliquam mattis egestas nisi, eget vestibulum sapien consectetur vel. Curabitur ultrices quis dolor accumsan vulputate. Suspendisse posuere pretium imperdiet. Integer blandit erat sem. Integer elementum eget nibh a tincidunt. Nullam eget nunc sed nunc maximus consectetur sit amet sit amet nulla. Aenean consectetur tincidunt nibh, sed elementum elit. Mauris quis urna non arcu volutpat lacinia.\n\nSed condimentum dignissim urna in aliquet. Donec nec lorem elit. Quisque posuere, elit eu laoreet consequat, arcu eros luctus nibh, et cursus est sapien ac neque. In tincidunt, enim nec elementum molestie, tellus sem pharetra quam, sed placerat turpis leo a justo. Curabitur quis gravida velit. Quisque sit amet erat ante. Nulla eget egestas orci.\n\nPhasellus quis accumsan quam. Maecenas volutpat fringilla nisl, ac elementum orci feugiat vel. Sed sit amet erat nulla. Aenean aliquam auctor imperdiet. Nunc ornare ipsum nec nulla pretium, vel dapibus ligula convallis. Nullam viverra quis tellus in sollicitudin. Mauris bibendum vitae ipsum eu rhoncus. Proin non dignissim magna. Vivamus libero quam, fermentum et venenatis quis, porttitor nec nisi. Sed in elit lacinia, varius nunc sit amet, tempor diam. Fusce id est libero. Etiam posuere volutpat tellus sit amet lobortis. Nullam interdum dapibus euismod. Suspendisse ultrices vel justo ac molestie. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.\n\nNulla laoreet orci a mauris aliquet pharetra. Praesent eget arcu sit amet velit congue scelerisque ac vel elit. Donec est ante, venenatis ut laoreet id, laoreet sed sem. Morbi et scelerisque orci. Sed fermentum massa vitae diam ultrices lobortis nec vulputate felis. Etiam nec velit ut sapien ullamcorper fermentum et in eros. Proin tristique justo vel erat posuere volutpat. Suspendisse nunc libero, interdum vitae ipsum eu, congue lobortis diam. Sed euismod nisl scelerisque mauris varius, quis lacinia metus vestibulum. Aenean tincidunt pharetra nulla, quis auctor odio commodo id. Curabitur ligula nibh, congue vel justo id, varius facilisis mi. Aliquam sed turpis sodales, scelerisque nulla in, scelerisque magna.\n\nPellentesque interdum augue in efficitur tempor. Vivamus id massa aliquam, fringilla nisl ac, pellentesque ipsum. Donec congue sed odio quis rhoncus. Morbi sagittis efficitur lobortis. Donec aliquam lacus eu arcu porttitor placerat. Proin lobortis, nunc at rutrum blandit, tortor neque cursus sem, sed dignissim enim est sed eros. Nunc fermentum enim sit amet lacus malesuada, sit amet ornare neque ornare.\n\nIn ultricies ut massa sagittis maximus. Nunc ornare congue pulvinar. Integer dictum et mauris nec porttitor. Aliquam convallis risus eget neque rutrum, ut suscipit velit faucibus. Ut convallis hendrerit tincidunt. Sed pellentesque fringilla urna quis mollis. Sed vel nunc ultricies, ornare quam ut, posuere tellus. Proin tempor ipsum eget quam iaculis commodo. Integer eleifend tellus id suscipit mattis.\n\nNullam a vestibulum augue. Pellentesque id luctus nibh. Sed mollis pretium massa dictum sodales. Nulla dictum tincidunt vehicula. Cras nec mauris nisl. Proin consequat eget magna vitae interdum. Donec elementum eget velit et hendrerit. Nullam sagittis orci quis leo varius, congue luctus urna semper. Donec sagittis erat quis tellus sollicitudin blandit. Ut egestas tempus libero, ac hendrerit tellus fermentum vel. Nulla ultricies sit amet tellus eu accumsan. Sed varius, velit vitae fringilla porttitor, massa mi molestie orci, efficitur facilisis odio diam eget nisi. Morbi scelerisque pellentesque sollicitudin. Aliquam erat volutpat.\n\n"
+      },
+      "dateCreated": "Sep 18, 2016 12:44:46 PM",
+      "dateStarted": "Sep 26, 2016 4:41:41 PM",
+      "dateFinished": "Sep 26, 2016 4:41:44 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%flink\n\ncase class WordCount(word: String, frequency: Int)\nval bible:DataSet[String] \u003d benv.readTextFile(\"/data/ipsum.txt\")\n\nval partialCounts: DataSet[WordCount] \u003d bible.flatMap{\n    line \u003d\u003e\n        \"\"\"\\b\\w+\\b\"\"\".r.findAllIn(line).map(word \u003d\u003e WordCount(word, 1))\n}\nval wordCounts \u003d partialCounts.groupBy(\"word\").reduce{\n    (left, right) \u003d\u003e WordCount(left.word, left.frequency + right.frequency)\n}\nval res \u003d wordCounts.first(10).collect()",
+      "dateUpdated": "Sep 26, 2016 4:46:56 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {},
+          "map": {
+            "baseMapType": "Streets",
+            "isOnline": true,
+            "pinCols": []
+          }
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1474202251398_1828142499",
+      "id": "20160918-123731_1102380051",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "defined class WordCount\nbible: org.apache.flink.api.scala.DataSet[String] \u003d org.apache.flink.api.scala.DataSet@34628227\npartialCounts: org.apache.flink.api.scala.DataSet[WordCount] \u003d org.apache.flink.api.scala.DataSet@d423137\nwordCounts: org.apache.flink.api.scala.DataSet[WordCount] \u003d org.apache.flink.api.scala.DataSet@ecfd300\nres: Seq[WordCount] \u003d Buffer(WordCount(Aenean,53), WordCount(Aliquam,55), WordCount(Class,5), WordCount(Cras,49), WordCount(Cum,6), WordCount(Curabitur,61), WordCount(Curae,12), WordCount(Donec,128), WordCount(Duis,60), WordCount(Etiam,49))\n"
+      },
+      "dateCreated": "Sep 18, 2016 12:37:31 PM",
+      "dateStarted": "Sep 26, 2016 4:46:56 PM",
+      "dateFinished": "Sep 26, 2016 4:47:02 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%flink\n",
+      "dateUpdated": "Sep 26, 2016 4:41:41 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {},
+          "map": {
+            "baseMapType": "Streets",
+            "isOnline": true,
+            "pinCols": []
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1474893899351_-789298482",
+      "id": "20160926-124459_600465653",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": ""
+      },
+      "dateCreated": "Sep 26, 2016 12:44:59 PM",
+      "dateStarted": "Sep 26, 2016 4:41:44 PM",
+      "dateFinished": "Sep 26, 2016 4:42:19 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Flink Simple",
+  "id": "2BW722PDN",
+  "angularObjects": {
+    "2BXEYJYKG:shared_process": [],
+    "2BY13NQ54:shared_process": [],
+    "2BWCEVGWK:shared_process": [],
+    "2BWHWMJSJ:shared_process": [],
+    "2BYVPZMDG:shared_process": [],
+    "2BXYFKDRB:shared_process": [],
+    "2BY8ZYWUD:shared_process": [],
+    "2BX9BPH5N:shared_process": [],
+    "2BWFW2RBH:shared_process": [],
+    "2BXVEYXDK:shared_process": [],
+    "2BYJVF57M:shared_process": [],
+    "2BX58S4EK:shared_process": [],
+    "2BXCC9XAK:shared_process": [],
+    "2BYBEBHDR:shared_process": [],
+    "2BWAX5UGZ:shared_process": [],
+    "2BVQZMS85:shared_process": [],
+    "2BZHV8U3U:shared_process": [],
+    "2BWDUMDJT:shared_process": []
+  },
+  "config": {},
+  "info": {}
+}

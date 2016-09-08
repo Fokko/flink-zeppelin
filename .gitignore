@@ -1,6 +1,9 @@
 *.class
 *.log
 
+.DS_Store
+.idea
+
 # sbt specific
 .cache
 .history

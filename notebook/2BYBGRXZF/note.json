@@ -1,0 +1,523 @@
+{
+  "paragraphs": [
+    {
+      "text": "%md\n\n# Streaming example\n\nInspired by: \n* https://github.com/mbalassi/flink/blob/stockprices/flink-staging/flink-streaming/flink-streaming-examples/src/main/scala/org/apache/flink/streaming/scala/examples/windowing/StockPrices.scala\n* https://github.com/apache/flink/blob/master/flink-examples/flink-examples-streaming/src/main/scala/org/apache/flink/streaming/scala/examples/windowing/TopSpeedWindowing.scala\n\nInteresting links:\n* https://flink.apache.org/news/2015/12/04/Introducing-windows.html\n* http://flink.apache.org/news/2015/02/09/streaming-example.html\n\n\n",
+      "dateUpdated": "Sep 27, 2016 11:45:11 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {},
+          "map": {
+            "baseMapType": "Streets",
+            "isOnline": true,
+            "pinCols": []
+          }
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/markdown",
+        "tableHide": false,
+        "editorHide": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1474917635382_1140194376",
+      "id": "20160926-192035_79968079",
+      "result": {
+        "code": "SUCCESS",
+        "type": "HTML",
+        "msg": "\u003ch1\u003eStreaming example\u003c/h1\u003e\n\u003cp\u003eInspired by:\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003ehttps://github.com/mbalassi/flink/blob/stockprices/flink-staging/flink-streaming/flink-streaming-examples/src/main/scala/org/apache/flink/streaming/scala/examples/windowing/StockPrices.scala\u003c/li\u003e\n\u003cli\u003ehttps://github.com/apache/flink/blob/master/flink-examples/flink-examples-streaming/src/main/scala/org/apache/flink/streaming/scala/examples/windowing/TopSpeedWindowing.scala\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eInteresting links:\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003ehttps://flink.apache.org/news/2015/12/04/Introducing-windows.html\u003c/li\u003e\n\u003cli\u003ehttp://flink.apache.org/news/2015/02/09/streaming-example.html\u003c/li\u003e\n\u003c/ul\u003e\n"
+      },
+      "dateCreated": "Sep 26, 2016 7:20:35 AM",
+      "dateStarted": "Sep 26, 2016 11:07:44 AM",
+      "dateFinished": "Sep 26, 2016 11:07:45 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%flink\n\n\nimport java.util.concurrent.TimeUnit._\nimport scala.util.Random\n\nimport org.apache.flink.streaming.api.scala._\nimport org.apache.flink.streaming.api.functions.source.SourceFunction\nimport org.apache.flink.streaming.api.functions.source.SourceFunction.SourceContext\nimport org.apache.flink.streaming.api.functions.windowing.delta.DeltaFunction\nimport org.apache.flink.streaming.api.windowing.assigners.GlobalWindows\nimport org.apache.flink.streaming.api.windowing.assigners.SlidingEventTimeWindows\nimport org.apache.flink.streaming.api.windowing.evictors.TimeEvictor\nimport org.apache.flink.streaming.api.windowing.triggers.DeltaTrigger\n\nimport org.apache.flink.streaming.api.functions.windowing.WindowFunction\nimport org.apache.flink.streaming.api.windowing.windows.Window\nimport org.apache.flink.streaming.api.windowing.windows.TimeWindow\n\nimport org.apache.flink.streaming.api.functions.sink.SocketClientSink\nimport org.apache.flink.streaming.util.serialization.{SimpleStringSchema, SerializationSchema}\nimport org.apache.flink.streaming.api.windowing.assigners.SlidingProcessingTimeWindows\n\n\n\nimport org.apache.flink.util.Collector\n\nimport java.beans.Transient\nimport java.util.concurrent.TimeUnit\n\nimport org.apache.flink.streaming.util.serialization.SimpleStringSchema\n\n",
+      "dateUpdated": "Sep 27, 2016 11:18:00 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {},
+          "map": {
+            "baseMapType": "Streets",
+            "isOnline": true,
+            "pinCols": []
+          }
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1474918037442_-1066541425",
+      "id": "20160926-192717_1822872061",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "import java.util.concurrent.TimeUnit._\nimport scala.util.Random\nimport org.apache.flink.streaming.api.scala._\nimport org.apache.flink.streaming.api.functions.source.SourceFunction\nimport org.apache.flink.streaming.api.functions.source.SourceFunction.SourceContext\nimport org.apache.flink.streaming.api.functions.windowing.delta.DeltaFunction\nimport org.apache.flink.streaming.api.windowing.assigners.GlobalWindows\nimport org.apache.flink.streaming.api.windowing.assigners.SlidingEventTimeWindows\nimport org.apache.flink.streaming.api.windowing.evictors.TimeEvictor\nimport org.apache.flink.streaming.api.windowing.triggers.DeltaTrigger\nimport org.apache.flink.streaming.api.functions.windowing.WindowFunction\nimport org.apache.flink.streaming.api.windowing.windows.Window\nimport org.apache.flink.streaming.api.windowing.windows.TimeWindow\nimport org.apache.flink.streaming.api.functions.sink.SocketClientSink\nimport org.apache.flink.streaming.util.serialization.{SimpleStringSchema, SerializationSchema}\nimport org.apache.flink.streaming.api.windowing.assigners.SlidingProcessingTimeWindows\nimport org.apache.flink.util.Collector\nimport java.beans.Transient\nimport java.util.concurrent.TimeUnit\nimport org.apache.flink.streaming.util.serialization.SimpleStringSchema\n"
+      },
+      "dateCreated": "Sep 26, 2016 7:27:17 AM",
+      "dateStarted": "Sep 27, 2016 11:18:00 AM",
+      "dateFinished": "Sep 27, 2016 11:18:19 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%flink\n\nval zeppelin \u003d \"zeppelin\"\nval NEWLINE \u003d 0x0A.toByte\nval TAB \u003d 0x09.toByte\n\ncase class StockPrice(symbol: String, price: Double, eventTime: Long)\ncase class Count(symbol: String, count: Int)\n\nval symbols \u003d List(\"SPX\", \"FTSE\", \"DJI\", \"DJT\", \"BUX\", \"DAX\", \"GOOG\", \"AAPL\", \"FB\")\n\nprivate var fileOutput: Boolean \u003d false\nprivate var hostName: String \u003d null\nprivate var port: Int \u003d 0\nprivate var outputPath: String \u003d null\n",
+      "dateUpdated": "Sep 27, 2016 11:18:04 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {},
+          "map": {
+            "baseMapType": "Streets",
+            "isOnline": true,
+            "pinCols": []
+          }
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala",
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1474904848557_865038810",
+      "id": "20160926-154728_1642612121",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "zeppelin: String \u003d zeppelin\nNEWLINE: Byte \u003d 10\nTAB: Byte \u003d 9\ndefined class StockPrice\ndefined class Count\nsymbols: List[String] \u003d List(SPX, FTSE, DJI, DJT, BUX, DAX, GOOG, AAPL, FB)\n"
+      },
+      "dateCreated": "Sep 26, 2016 3:47:28 AM",
+      "dateStarted": "Sep 27, 2016 11:18:04 AM",
+      "dateFinished": "Sep 27, 2016 11:18:25 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%flink\n\nclass StockSourceFunction(symbol: String, basePrice: Double, sigma: Int) extends SourceFunction[StockPrice]() {\n  var price \u003d basePrice\n  @Transient lazy val rand \u003d new Random()\n\n  var isRunning:Boolean \u003d true\n\n  override def run(ctx: SourceContext[StockPrice]) \u003d {\n    while (isRunning) {\n        val rnd \u003d Random.nextGaussian\n        \n        price \u003d if(price + rnd * sigma \u003c 0) \n            price + rnd * sigma * -1 // Make it positive as we don\u0027t want any negative prices :-)\n        else \n            price + rnd * sigma\n            \n            \n        Thread.sleep(Random.nextInt(200))\n        \n        val stock \u003d StockPrice(symbol, price, System.currentTimeMillis)\n        \n        ctx.collect(stock)\n    }\n  }\n\n  override def cancel(): Unit \u003d isRunning \u003d false\n}\n\nval stockStream \u003d senv.addSource(new StockSourceFunction(\"SPX\", 20, 10)).union(\n    senv.addSource(new StockSourceFunction(\"FTSE\", 50, 20)),\n    senv.addSource(new StockSourceFunction(\"GOOG\", 100, 30)),\n    senv.addSource(new StockSourceFunction(\"FB\", 42, 22)),\n    senv.addSource(new StockSourceFunction(\"AAPL\", 140, 40))\n)",
+      "dateUpdated": "Sep 27, 2016 11:23:42 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {},
+          "map": {
+            "baseMapType": "Streets",
+            "isOnline": true,
+            "pinCols": []
+          }
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1474920009779_-1429478189",
+      "id": "20160926-200009_1188601262",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "defined class StockSourceFunction\nstockStream: org.apache.flink.streaming.api.scala.DataStream[StockPrice] \u003d org.apache.flink.streaming.api.scala.DataStream@2e7fbddb\n"
+      },
+      "dateCreated": "Sep 26, 2016 8:00:09 AM",
+      "dateStarted": "Sep 27, 2016 11:18:19 AM",
+      "dateFinished": "Sep 27, 2016 11:18:29 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n\n# Windows\n\n`Interface WindowFunction\u003cIN,OUT,KEY,W extends Window\u003e`\n\nMore information at:\n* https://ci.apache.org/projects/flink/flink-docs-master/api/java/org/apache/flink/streaming/api/functions/windowing/WindowFunction.html\n* https://ci.apache.org/projects/flink/flink-docs-release-1.1/apis/streaming/windows.html\n* https://www.mapr.com/blog/essential-guide-streaming-first-processing-apache-flink",
+      "dateUpdated": "Sep 27, 2016 11:14:19 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {},
+          "map": {
+            "baseMapType": "Streets",
+            "isOnline": true,
+            "pinCols": []
+          }
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/markdown"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1474930918473_850173173",
+      "id": "20160926-230158_1496546499",
+      "result": {
+        "code": "SUCCESS",
+        "type": "HTML",
+        "msg": "\u003ch1\u003eWindows\u003c/h1\u003e\n\u003cp\u003e\u003ccode\u003eInterface WindowFunction\u0026lt;IN,OUT,KEY,W extends Window\u0026gt;\u003c/code\u003e\u003c/p\u003e\n\u003cp\u003eMore information at:\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003ehttps://ci.apache.org/projects/flink/flink-docs-master/api/java/org/apache/flink/streaming/api/functions/windowing/WindowFunction.html\u003c/li\u003e\n\u003cli\u003ehttps://ci.apache.org/projects/flink/flink-docs-release-1.1/apis/streaming/windows.html\u003c/li\u003e\n\u003cli\u003ehttps://www.mapr.com/blog/essential-guide-streaming-first-processing-apache-flink\u003c/li\u003e\n\u003c/ul\u003e\n"
+      },
+      "dateCreated": "Sep 26, 2016 11:01:58 AM",
+      "dateStarted": "Sep 27, 2016 11:14:19 AM",
+      "dateFinished": "Sep 27, 2016 11:14:19 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sh\n\nrm /tmp/output\necho -e \u0027Symbol\\tRecieved\\tValue\\n\u0027 \u003e /tmp/output\n\nnetcat -l 4444 \u003e\u003e /tmp/output\n",
+      "dateUpdated": "Sep 27, 2016 11:18:56 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "lineChart",
+          "height": 444.0,
+          "optionOpen": true,
+          "keys": [
+            {
+              "name": "Recieved",
+              "index": 1.0,
+              "aggr": "sum",
+              "$$hashKey": "object:1252"
+            }
+          ],
+          "values": [
+            {
+              "name": "Value",
+              "index": 2.0,
+              "aggr": "sum",
+              "$$hashKey": "object:1258"
+            }
+          ],
+          "groups": [
+            {
+              "name": "Symbol",
+              "index": 0.0,
+              "aggr": "sum",
+              "$$hashKey": "object:1255"
+            }
+          ],
+          "scatter": {
+            "xAxis": {
+              "name": "Symbol",
+              "index": 0.0,
+              "aggr": "sum"
+            },
+            "yAxis": {
+              "name": "Recieved",
+              "index": 1.0,
+              "aggr": "sum"
+            }
+          },
+          "map": {
+            "baseMapType": "Streets",
+            "isOnline": true,
+            "pinCols": []
+          }
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala",
+        "helium": {}
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1474925357864_559338063",
+      "id": "20160926-212917_929958945",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": ""
+      },
+      "dateCreated": "Sep 26, 2016 9:29:17 AM",
+      "dateStarted": "Sep 27, 2016 11:18:56 AM",
+      "dateFinished": "Sep 27, 2016 11:18:38 AM",
+      "status": "ABORT",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%flink\n\n\nval schema: SerializationSchema[StockPrice] \u003d new SerializationSchema[StockPrice]() {\n    override def serialize(sp: StockPrice): Array[Byte] \u003d {\n        val tempString \u003d sp.symbol + \"\\t\" + sp.eventTime.toString + \"\\t\" + sp.price.toString + \"\\n\"\n        tempString.getBytes()\n    }\n}\n  \n\nval maxPrice \u003d stockStream\n    .keyBy(_.symbol)\n    .window(SlidingProcessingTimeWindows.of(Time.seconds(10), Time.seconds(5)))\n    .apply { (\n        key: String,\n        window: TimeWindow,\n        stockPrices: Iterable[StockPrice],\n        out: Collector[StockPrice]) \u003d\u003e\n            var total \u003d 0.0;\n            var count \u003d 0L\n            stockPrices.foreach( sp \u003d\u003e {\n                total \u003d total + sp.price\n                count \u003d count + 1L\n            })\n          \n          out.collect( StockPrice(key, total / count.toDouble, window.getEnd ) )\n    }\n    \nmaxPrice.writeToSocket(zeppelin, 4444, schema)\n\nsenv.execute(\"SimpleMax\")\n",
+      "dateUpdated": "Sep 27, 2016 11:18:58 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {},
+          "map": {
+            "baseMapType": "Streets",
+            "isOnline": true,
+            "pinCols": []
+          }
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1474922706423_-392518083",
+      "id": "20160926-204506_1721471931",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": ""
+      },
+      "dateCreated": "Sep 26, 2016 8:45:06 AM",
+      "dateStarted": "Sep 27, 2016 11:18:58 AM",
+      "dateFinished": "Sep 27, 2016 11:18:36 AM",
+      "status": "ABORT",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sh \necho -e \"%table\"\ncat /tmp/output",
+      "dateUpdated": "Sep 27, 2016 11:22:44 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "lineChart",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [
+            {
+              "name": "Recieved",
+              "index": 1.0,
+              "aggr": "sum"
+            }
+          ],
+          "values": [
+            {
+              "name": "Value",
+              "index": 2.0,
+              "aggr": "sum"
+            }
+          ],
+          "groups": [
+            {
+              "name": "Symbol",
+              "index": 0.0,
+              "aggr": "sum"
+            }
+          ],
+          "scatter": {
+            "xAxis": {
+              "name": "Symbol",
+              "index": 0.0,
+              "aggr": "sum"
+            },
+            "yAxis": {
+              "name": "Recieved",
+              "index": 1.0,
+              "aggr": "sum"
+            }
+          },
+          "map": {
+            "baseMapType": "Streets",
+            "isOnline": true,
+            "pinCols": []
+          }
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/sh",
+        "helium": {},
+        "editorHide": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1474970581508_-613742270",
+      "id": "20160927-100301_569017320",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TABLE",
+        "msg": "Symbol\tRecieved\tValue\n\nSPX\t1474975145000\t52.38470913346297\nFTSE\t1474975145000\t53.78967752864167\nAAPL\t1474975145000\t101.30821738089303\nGOOG\t1474975145000\t57.87310440717987\nSPX\t1474975150000\t65.81758212715143\nFTSE\t1474975150000\t63.93801695285555\nAAPL\t1474975150000\t154.6573409218348\nGOOG\t1474975150000\t75.78666902013276\nSPX\t1474975155000\t88.42546888389798\nFTSE\t1474975155000\t125.30471517658161\nAAPL\t1474975155000\t462.7030318662943\nGOOG\t1474975155000\t121.91213398040897\nSPX\t1474975160000\t123.09735046845155\nFTSE\t1474975160000\t270.665602815884\nAAPL\t1474975160000\t887.729613721012\nGOOG\t1474975160000\t178.88621627094514\nSPX\t1474975165000\t162.74466735395475\nFTSE\t1474975165000\t332.7417825458836\nAAPL\t1474975165000\t1009.714237269859\nGOOG\t1474975165000\t209.68780640939266\nSPX\t1474975170000\t191.80345054735085\nFTSE\t1474975170000\t338.75722155411836\nAAPL\t1474975170000\t817.1522567692422\nGOOG\t1474975170000\t213.24370219530962\nSPX\t1474975175000\t127.48974360175738\nFTSE\t1474975175000\t365.5091386911522\nAAPL\t1474975175000\t764.5197430997548\nGOOG\t1474975175000\t156.15357344081582\nSPX\t1474975180000\t56.99791566068222\nFTSE\t1474975180000\t397.5866247514566\nAAPL\t1474975180000\t968.9825451904485\nGOOG\t1474975180000\t157.18208153733153\nSPX\t1474975185000\t61.82895287266464\nFTSE\t1474975185000\t458.2165015289041\nAAPL\t1474975185000\t920.7866608939768\nGOOG\t1474975185000\t144.84556211260863\nSPX\t1474975190000\t124.50726429849941\nFTSE\t1474975190000\t561.2464067519529\nAAPL\t1474975190000\t645.0937353283234\nGOOG\t1474975190000\t91.38889403636375\nSPX\t1474975195000\t174.76751849408163\nFTSE\t1474975195000\t724.4818203647458\nAAPL\t1474975195000\t474.1061159829318\nGOOG\t1474975195000\t156.16225465340474\nSPX\t1474975200000\t135.36101237103958\nFTSE\t1474975200000\t837.9611559182573\nAAPL\t1474975200000\t492.05562554777384\nGOOG\t1474975200000\t346.0844496164677\nSPX\t1474975205000\t60.46203239774965\nFTSE\t1474975205000\t778.003315562256\nAAPL\t1474975205000\t355.7262398511701\nGOOG\t1474975205000\t603.3424650307579\nSPX\t1474975210000\t24.31204045970766\nFTSE\t1474975210000\t648.8574946012707\nAAPL\t1474975210000\t157.22249951917328\nGOOG\t1474975210000\t705.902213202212\nSPX\t1474975215000\t50.64495950270783\nFTSE\t1474975215000\t533.6565107539589\nAAPL\t1474975215000\t145.39683610109492\nGOOG\t1474975215000\t795.5181475337167\nSPX\t1474975220000\t104.95744383374453\nFTSE\t1474975220000\t519.1590312172863\nAAPL\t1474975220000\t186.7103739577715\nGOOG\t1474975220000\t984.7835805585293\nSPX\t1474975225000\t156.59102920970878\nFTSE\t1474975225000\t621.7081122923413\nAAPL\t1474975225000\t228.406366201132\nGOOG\t1474975225000\t1112.2301747495956\nSPX\t1474975230000\t158.83567301790484\nFTSE\t1474975230000\t675.222211241138\nAAPL\t1474975230000\t211.132501210678\nGOOG\t1474975230000\t1077.9293776495354\nSPX\t1474975235000\t78.45408789212168\nFTSE\t1474975235000\t596.9808566037611\nAAPL\t1474975235000\t220.95828070337961\nGOOG\t1474975235000\t869.6331571097775\nSPX\t1474975240000\t53.2926737764324\nFTSE\t1474975240000\t520.7960711160854\nAAPL\t1474975240000\t322.64481584104817\nGOOG\t1474975240000\t622.2734852086335\nSPX\t1474975245000\t63.966879178325115\nFTSE\t1474975245000\t526.7093699880876\nAAPL\t1474975245000\t399.0950696870437\nGOOG\t1474975245000\t389.17905972404657\nSPX\t1474975250000\t70.16469803198756\nFTSE\t1474975250000\t465.515637136665\nAAPL\t1474975250000\t505.5129962560507\nGOOG\t1474975250000\t261.3307648284586\nSPX\t1474975255000\t76.99081821702495\nFTSE\t1474975255000\t310.4657300585479\nAAPL\t1474975255000\t683.3141968624924\nGOOG\t1474975255000\t310.9217580833843\nSPX\t1474975260000\t61.28017505300865\nFTSE\t1474975260000\t133.563746889666\nAAPL\t1474975260000\t890.4830279428373\nGOOG\t1474975260000\t243.64745161396874\nSPX\t1474975265000\t55.37567678701025\nFTSE\t1474975265000\t125.5979859872453\nAAPL\t1474975265000\t973.7842889430382\nGOOG\t1474975265000\t158.76420413507057\nSPX\t1474975270000\t60.61066494696678\nFTSE\t1474975270000\t98.79253231728012\nAAPL\t1474975270000\t904.9618380142788\nGOOG\t1474975270000\t124.04142303057164\nSPX\t1474975275000\t100.66960297300257\nFTSE\t1474975275000\t101.81788740419721\nAAPL\t1474975275000\t1092.3840583622862\nGOOG\t1474975275000\t235.9136107747624\nSPX\t1474975280000\t137.4147006457579\nFTSE\t1474975280000\t192.9124113329038\nAAPL\t1474975280000\t1305.0306852193187\nGOOG\t1474975280000\t481.4552355357526\nSPX\t1474975285000\t83.9029016346444\nFTSE\t1474975285000\t209.72186825435793\nAAPL\t1474975285000\t1249.802289384306\nGOOG\t1474975285000\t680.5961345829013\nSPX\t1474975290000\t28.27057346714909\nFTSE\t1474975290000\t219.71396566436957\nAAPL\t1474975290000\t1353.2818128997862\nGOOG\t1474975290000\t820.1594676553517\nSPX\t1474975295000\t35.281045745774726\nFTSE\t1474975295000\t224.80584685836538\nAAPL\t1474975295000\t1592.63796190108\nGOOG\t1474975295000\t873.4035529546298\nSPX\t1474975300000\t72.33137081411645\nFTSE\t1474975300000\t237.85526170480875\nAAPL\t1474975300000\t1770.6870011368408\nGOOG\t1474975300000\t824.3215567747698\nSPX\t1474975305000\t116.42488657571063\nFTSE\t1474975305000\t312.040116284371\nAAPL\t1474975305000\t1799.4214365747243\nGOOG\t1474975305000\t836.5486113354254\nSPX\t1474975310000\t156.63655484967225\nFTSE\t1474975310000\t280.7233967569535\nAAPL\t1474975310000\t1865.2623027796724\nGOOG\t1474975310000\t926.7172640822342\nSPX\t1474975315000\t198.5990377973221\nFTSE\t1474975315000\t154.84837797005747\nAAPL\t1474975315000\t2078.644068447271\nGOOG\t1474975315000\t832.0327576369012\nSPX\t1474975320000\t189.05112238668568\nFTSE\t1474975320000\t111.78360933915914\nAAPL\t1474975320000\t2258.2685826052602\nGOOG\t1474975320000\t811.456100559513\nSPX\t1474975325000\t121.3140605129496\nFTSE\t1474975325000\t198.428833310036\nAAPL\t1474975325000\t2193.935434367863\nGOOG\t1474975325000\t1138.7812944566258\nSPX\t1474975330000\t108.34940904446775\nFTSE\t1474975330000\t327.24495997400135\nAAPL\t1474975330000\t1871.2380678158934\nGOOG\t1474975330000\t1419.6596969920213\nSPX\t1474975335000\t136.23435589480223\nFTSE\t1474975335000\t364.6131192776044\nAAPL\t1474975335000\t1621.129564952578\nGOOG\t1474975335000\t1456.1441011184934\nSPX\t1474975340000\t157.31005880909717\nFTSE\t1474975340000\t379.8907517533062\nAAPL\t1474975340000\t1535.7522790791338\nGOOG\t1474975340000\t1478.207773512976\nSPX\t1474975345000\t184.10910730214292\nFTSE\t1474975345000\t470.212939794496\nAAPL\t1474975345000\t1424.2402830800174\nGOOG\t1474975345000\t1423.529716124657\nSPX\t1474975350000\t255.2380307659933\nFTSE\t1474975350000\t452.83042446222294\nAAPL\t1474975350000\t1461.7016713467174\nGOOG\t1474975350000\t1187.3237640368382\nSPX\t1474975355000\t344.54335442727313\nFTSE\t1474975355000\t312.90995312094617\nAAPL\t1474975355000\t1531.8144633562367\nGOOG\t1474975355000\t1207.0802099173943\nSPX\t1474975360000\t450.0261444365837\nFTSE\t1474975360000\t370.8084266747731\nAAPL\t1474975360000\t1513.7037999555644\nGOOG\t1474975360000\t1310.7036264639207\n"
+      },
+      "dateCreated": "Sep 27, 2016 10:03:01 AM",
+      "dateStarted": "Sep 27, 2016 11:22:44 AM",
+      "dateFinished": "Sep 27, 2016 11:22:44 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%flink\n\nval triggerPrice \u003d 0.05\nval evictionSec \u003d 10\n\nval maxPrice \u003d stockStream\n      .assignAscendingTimestamps( _.time )\n      .keyBy(\"symbol\")\n      .window(GlobalWindows.create)\n      .evictor(TimeEvictor.of(Time.of(evictionSec * 1000, TimeUnit.MILLISECONDS)))\n      .trigger(DeltaTrigger.of(triggerPrice, new DeltaFunction[StockPrice] {\n        def getDelta(oldSp: StockPrice, newSp: StockPrice): Double \u003d Math.abs(oldSp.price / newSp.price - 1)\n      }, stockStream.getType().createSerializer(senv.getConfig)))\n      .maxBy(\"price\")\n\nmaxPrice.print()\n\nsenv.execute(\"TrackStockprices\")\n\n\n\ndef mean(ts: Iterable[StockPrice], out: Collector[StockPrice]) \u003d {\n  if (ts.nonEmpty) {\n    out.collect(StockPrice(ts.head.symbol, ts.foldLeft(0: Double)(_ + _.price) / ts.size))\n  }\n}\n\ndef sendWarning(ts: Iterable[StockPrice], out: Collector[String]) \u003d {\n  if (ts.nonEmpty) out.collect(ts.head.symbol)\n}\n\ndef computeCorrelation(input: Iterable[(Int, Int)], out: Collector[Double]) \u003d {\n  if (input.nonEmpty) {\n    val var1 \u003d input.map(_._1)\n    val mean1 \u003d average(var1)\n    val var2 \u003d input.map(_._2)\n    val mean2 \u003d average(var2)\n\n    val cov \u003d average(var1.zip(var2).map(xy \u003d\u003e (xy._1 - mean1) * (xy._2 - mean2)))\n    val d1 \u003d Math.sqrt(average(var1.map(x \u003d\u003e Math.pow((x - mean1), 2))))\n    val d2 \u003d Math.sqrt(average(var2.map(x \u003d\u003e Math.pow((x - mean2), 2))))\n\n    out.collect(cov / (d1 * d2))\n  }\n}\n\n\n\ndef average[T](ts: Iterable[T])(implicit num: Numeric[T]) \u003d {\n  num.toDouble(ts.sum) / ts.size\n}\n\ndef generateTweets \u003d {\n  () \u003d\u003e\n    val s \u003d for (i \u003c- 1 to 3) yield (symbols(Random.nextInt(symbols.size)))\n    Thread.sleep(Random.nextInt(500))\n    s.mkString(\" \")\n}\n",
+      "dateUpdated": "Sep 26, 2016 9:00:33 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {},
+          "map": {
+            "baseMapType": "Streets",
+            "isOnline": true,
+            "pinCols": []
+          }
+        },
+        "enabled": false,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1474919870042_1294007677",
+      "id": "20160926-195750_103784616",
+      "dateCreated": "Sep 26, 2016 7:57:50 AM",
+      "dateStarted": "Sep 26, 2016 8:41:39 AM",
+      "dateFinished": "Sep 26, 2016 8:41:48 AM",
+      "status": "ERROR",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "//Step 1 \n//Read a stream of stock prices from different sources and union it into one stream\n\n//Read from a socket stream at map it to StockPrice objects\nval socketStockStream \u003d env.socketTextStream(hostName, port).map(x \u003d\u003e {\n  val split \u003d x.split(\",\")\n  StockPrice(split(0), split(1).toDouble)\n})\n\n//Generate other stock streams\nval SPX_Stream \u003d env.addSource(generateStock(\"SPX\")(10))\nval FTSE_Stream \u003d env.addSource(generateStock(\"FTSE\")(20))\nval DJI_Stream \u003d env.addSource(generateStock(\"DJI\")(30))\nval BUX_Stream \u003d env.addSource(generateStock(\"BUX\")(40))\n\n//Union all stock streams together\nval stockStream \u003d socketStockStream.union(SPX_Stream, FTSE_Stream, DJI_Stream, BUX_Stream)\n\n\n//Step 2\n//Compute some simple statistics on a rolling window\nval windowedStream \u003d stockStream.window(Time.of(10, SECONDS)).every(Time.of(5, SECONDS))\n\nval lowest \u003d windowedStream.minBy(\"price\")\nval maxByStock \u003d windowedStream.groupBy(\"symbol\").maxBy(\"price\").getDiscretizedStream\nval rollingMean \u003d windowedStream.groupBy(\"symbol\").mapWindow(mean _).getDiscretizedStream\n\n//Step 3 \n//Use delta policy to create price change warnings,\n// and also count the number of warning every half minute\n\nval priceWarnings \u003d stockStream.groupBy(\"symbol\")\n  .window(Delta.of(0.05, priceChange, defaultPrice))\n  .mapWindow(sendWarning _)\n  .flatten()\n  \nval warningsPerStock \u003d priceWarnings\n  .map(Count(_, 1))\n  .window(Time.of(30, SECONDS))\n  .groupBy(\"symbol\")\n  .sum(\"count\")\n  .flatten()\n  \n//Step 4 \n//Read a stream of tweets and extract the stock symbols\n\nval tweetStream \u003d env.addSource(generateTweets)\n\nval mentionedSymbols \u003d tweetStream.flatMap(tweet \u003d\u003e tweet.split(\" \"))\n  .map(_.toUpperCase())\n  .filter(symbols.contains(_))                     \n                \nval tweetsPerStock \u003d mentionedSymbols.map(Count(_, 1))\n  .window(Time.of(30, SECONDS))\n  .groupBy(\"symbol\")\n  .sum(\"count\")\n  .flatten()\n  \nav//Step 5\n//For advanced analysis we join the number of tweets and\n//the number of price change warnings by stock\n//for the last half minute, we keep only the counts.\n//This information is used to compute rolling correlations\n//between the tweets and the price changes                              \n\nval tweetsAndWarning \u003d warningsPerStock\n  .join(tweetsPerStock)\n  .onWindow(30, SECONDS)\n  .where(\"symbol\")\n  .equalTo(\"symbol\") { (c1, c2) \u003d\u003e (c1.count, c2.count) }\n\n\nval rollingCorrelation \u003d tweetsAndWarning.window(Time.of(30, SECONDS))\n  .mapWindow(computeCorrelation _)\n  .flatten()\n\nif (fileOutput) {\n  rollingCorrelation.writeAsText(outputPath, 1)\n} else {\n  rollingCorrelation.print\n}\n\nenv.execute(\"Stock stream\")\n\n\n",
+      "dateUpdated": "Sep 26, 2016 11:07:35 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {},
+          "map": {
+            "baseMapType": "Streets",
+            "isOnline": true,
+            "pinCols": []
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1474909827269_-1286370891",
+      "id": "20160926-171027_207004911",
+      "dateCreated": "Sep 26, 2016 5:10:27 AM",
+      "dateStarted": "Sep 26, 2016 5:54:52 AM",
+      "dateFinished": "Sep 26, 2016 5:55:10 AM",
+      "status": "ERROR",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "\nDataStream\u003cString\u003e streamSource \u003d senv.addSource(new TwitterSource(props))\n\n",
+      "dateUpdated": "Sep 26, 2016 5:17:10 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {},
+          "map": {
+            "baseMapType": "Streets",
+            "isOnline": true,
+            "pinCols": []
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1474910000609_2047522656",
+      "id": "20160926-171320_1568505256",
+      "dateCreated": "Sep 26, 2016 5:13:20 AM",
+      "dateStarted": "Sep 26, 2016 5:14:34 AM",
+      "dateFinished": "Sep 26, 2016 5:14:34 AM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Flink Streaming",
+  "id": "2BYBGRXZF",
+  "angularObjects": {
+    "2BYSZP6TH:shared_process": [],
+    "2BY3BA3QT:shared_process": [],
+    "2BXPVZDC1:shared_process": [],
+    "2BY53DFGG:shared_process": [],
+    "2BZNMW7P7:shared_process": [],
+    "2BXYVDBC6:shared_process": [],
+    "2BZPB5U8Q:shared_process": [],
+    "2BWD2D7PH:shared_process": [],
+    "2BZMMZ86B:shared_process": [],
+    "2BW7HE6T3:shared_process": [],
+    "2BYK447YH:shared_process": [],
+    "2BY3A9M75:shared_process": [],
+    "2BWDVUEB1:shared_process": [],
+    "2BWF2Z2ZP:shared_process": [],
+    "2BZFN3NPX:shared_process": [],
+    "2BXNMUG3M:shared_process": [],
+    "2BWP4NUKU:shared_process": [],
+    "2BZNBBF93:shared_process": []
+  },
+  "config": {},
+  "info": {}
+}

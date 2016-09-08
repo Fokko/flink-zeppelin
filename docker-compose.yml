@@ -1,0 +1,30 @@
+version: '2'
+services:
+  zeppelin:
+    build: ./zeppelin/
+    ports:
+      - "8080:8080"
+    links:
+      - jobmanager:flink
+    volumes:
+      - ./notebook:/zeppelin/notebook
+      - ./data:/data
+  jobmanager:
+    build: ./flink/
+    ports:
+      - "8081:8081"
+    command: jobmanager
+    volumes:
+      - /opt/flink/conf
+      - ./data:/data
+  taskmanager:
+    build: ./flink/
+    depends_on:
+      - jobmanager
+    command: taskmanager
+    volumes_from:
+      - jobmanager:ro
+    links:
+      - zeppelin:zeppelin
+    volumes:
+      - ./data:/data
