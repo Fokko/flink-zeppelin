@@ -1,7 +1,7 @@
 version: '2'
 services:
   zeppelin:
-    build: ./zeppelin/
+    image: fokkodriesprong/docker-zeppelin
     ports:
       - "8080:8080"
     links:
@@ -10,7 +10,7 @@ services:
       - ./notebook:/zeppelin/notebook
       - ./data:/data
   jobmanager:
-    build: ./flink/
+    image: fokkodriesprong/docker-flink
     ports:
       - "8081:8081"
     command: jobmanager
@@ -18,7 +18,7 @@ services:
       - /opt/flink/conf
       - ./data:/data
   taskmanager:
-    build: ./flink/
+    image: fokkodriesprong/docker-flink
     depends_on:
       - jobmanager
     command: taskmanager
